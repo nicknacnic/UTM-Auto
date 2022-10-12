@@ -4,17 +4,17 @@
 
 ## Installation
 
-Clone the latest repository [GitHub](https://github.com/nicknac_nic/UTM-Auto-Install).
+Clone the latest repository [GitHub](https://github.com/nicknac_nic/UTM-Auto).
 
-Prior to deploying this script, you will want to go to UTM's Gallery [UTM Gallery](https://mac.getutm.app/gallery/) to create your own VMs. Then you will want to share those VMs, compress them, and put them in a shared GDrive folder (mine has both 'stable' and 'dev' folders for testing), get the shasum of them as well.
+Prior to deploying this script, you will want to go to [UTM's Gallery](https://mac.getutm.app/gallery/) to create your own VMs. Then you will want to share those VMs, compress them, and put them in a shared GDrive folder (mine has both 'stable' and 'dev' folders for testing), get the shasum of them as well.
 
 Have end users make a shortcut to that folder in their drive, and then within Finder, find that directory, right click, and make it available offline. This predownloads the VMs onto user machines.
 
 Edit SAD-LoL.sh install, uninstall, and test functions to include your VM names and hashes. Put it in the same drive as the VMs, run the below (your filenames may vary):
 
-                  cd / ; cd  /Volumes/GoogleDrive ; cd My* ; cd UTM-Auto-Install/install
-                  chmod +x auto.sh
-                  ./auto.sh -i
+                  cd / ; cd  /Volumes/GoogleDrive ; cd My* ; cd UTM-Auto-Install/install ;
+                  chmod +x auto.sh ;
+                  ./auto.sh -i && wait 
 
 
 
