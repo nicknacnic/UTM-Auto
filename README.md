@@ -38,7 +38,7 @@ Options:
  -o    Optional Install.
  -t    Testing.
  -r    Reinstall or Upgrade.
-  *    Don't try anything else.
+ -*    Don't try anything else.
 
 ```
 
