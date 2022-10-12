@@ -4,68 +4,55 @@
 
 ## Installation
 
-Download the latest flightsim binary for your OS from the [GitHub Releases](https://github.com/alphasoc/flightsim/releases) page. Alternatively, the utility can be built using [Golang](https://golang.org/doc/install) in any environment (e.g. Linux, MacOS, Windows), as follows:
+Clone the latest repository [GitHub](https://github.com/nicknac_nic/UTM-Auto-Install).
+
+Prior to deploying this script, you will want to go to UTM's Gallery [UTM Gallery](https://mac.getutm.app/gallery/) to create your own VMs. Then you will want to share those VMs, compress them, and put them in a shared GDrive folder (mine has both 'stable' and 'dev' folders for testing), get the shasum of them as well.
+
+Have end users make a shortcut to that folder in their drive, and then within Finder, find that directory, right click, and make it available offline. This predownloads the VMs onto user machines.
+
+Edit SAD-LoL.sh install, uninstall, and test functions to include your VM names and hashes. Put it in the same drive as the VMs, run the below (your filenames may vary):
+
+                  cd / ; cd  /Volumes/GoogleDrive ; cd My* ; cd UTM-Auto-Install/install
+                  chmod +x auto.sh
+                  ./auto.sh -i
+
 
 ```
-go get -u github.com/alphasoc/flightsim/...
-```
 
-## Running Network Flight Simulator
+## Running auto.sh
 
-Upon installation, test flightsim as follows:
+This script utilizes GDrive Desktop on Mac M1 and UTM to properly build a lab. Usage:
 
 ```
-$ flightsim --help
+$ ./auto -h
 
-AlphaSOC Network Flight Simulator™ (https://github.com/alphasoc/flightsim)
+This script builds a local lab environment.
 
-flightsim is an application which generates malicious network traffic for security
-teams to evaluate security controls (e.g. firewalls) and ensure that monitoring tools
-are able to detect malicious traffic.
+Syntax: ./auto -[i|h|u|...]
 
-Usage:
-    flightsim <command> [arguments]
+Options:
 
-Available commands:
-    get         Get a list of elements (ie. families) of a certain category (ie. c2)
-    run         Run all modules, or a particular module
-    version     Prints the version number
+ -i    Install.
+ -h    Print this help menu.
+ -u    Uninstall.
+ -o    Optional Install.
+ -t    Testing.
+ -r    Reinstall or Upgrade.
+  *    Don't try anything else.
 
-Cheatsheet:
-    flightsim run                   Run all the modules
-    flightsim run c2                Simulate C2 traffic
-    flightsim run c2:trickbot       Simulate C2 traffic for the TrickBot family
-    flightsim run ssh-transfer:1GB  Simulate a 1GB SSH/SFTP file transfer
-
-    flightsim get families:c2       Get a list of all c2 families
 ```
 
-The utility runs individual modules to generate malicious traffic. To perform all available tests, simply use `flightsim run` which will generate traffic using the first available non-loopback network interface. **Note:** when running many modules, flightsim will gather destination addresses from the AlphaSOC API, so requires egress Internet access.
+The script options work as follows:
 
-To list the available modules, use `flightsim run --help`. To execute a particular test, use `flightsim run <module>`, as below.
+## Description of flags
 
-
-
-
-
-
-
-
-
-## Description of Modules
-
-The modules packaged with the utility are listed in the table below.
-
-| Module        | Description                                                                   |
-| ------------- | ----------------------------------------------------------------------------- |
-| `c2`          | Generates both DNS and IP traffic to a random list of known C2 destinations   |
-| `dga`         | Simulates DGA traffic using random labels and top-level domains               |
-| `imposter`    | Generates DNS traffic to a list of imposter domains                           |
-| `miner`       | Generates Stratum mining protocol traffic to known cryptomining pools         |
-| `scan`        | Performs a port scan of random RFC 5737 addresses using common TCP ports      |
-| `sink`        | Connects to known sinkholed destinations run by security researchers          |
-| `spambot`     | Resolves and connects to random Internet SMTP servers to simulate a spam bot  |
-| `ssh-exfil`   | Simulates an SSH file transfer to a service running on a non-standard SSH port|
-| `ssh-transfer`| Simulates an SSH file transfer to a service running on an SSH port            |
-| `tunnel-dns`  | Generates DNS tunneling requests to \*.sandbox.alphasoc.xyz                   |
-| `tunnel-icmp` | Generates ICMP tunneling traffic to an Internet service operated by AlphaSOC  |
+_____________________________________________________________________________________________
+| Flag      | Description                                                                   |
+| --------- | ----------------------------------------------------------------------------- |
+| -h        | Displays help menu                                                            |
+| -i        | Runs the install script, installing homebrew, docker, utm, and pulling VMs    |
+| -u        | Uninstalls all the above                                                      |
+| -o        | Optional installs, requires user edit to uncomment desired packages           |
+| -t        | Test, for script maintainers or beta program users to install other VMs       |
+| -r        | Reinstall, for when beta goes to prod or someone corrupts a VM                |
+---------------------------------------------------------------------------------------------
