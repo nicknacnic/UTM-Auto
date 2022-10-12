@@ -10,7 +10,7 @@ Prior to deploying this script, you will want to go to [UTM's Gallery](https://m
 
 Have end users make a shortcut to that folder in their drive, and then within Finder, find that directory, right click, and make it available offline. This predownloads the VMs onto user machines.
 
-Edit SAD-LoL.sh install, uninstall, and test functions to include your VM names and hashes. Put it in the same drive as the VMs, run the below (your filenames may vary):
+Edit auto.sh install, uninstall, and test functions to include your VM names and hashes. Put it in the same drive as the VMs, run the below (your filenames may vary):
 
                   cd / ; cd  /Volumes/GoogleDrive ; cd My* ; cd UTM-Auto-Install/install ;
                   chmod +x auto.sh ;
@@ -23,11 +23,11 @@ Edit SAD-LoL.sh install, uninstall, and test functions to include your VM names 
 This script utilizes GDrive Desktop on Mac M1 and UTM to properly build a lab. Usage:
 
 ```
-$ ./auto -h
+$ ./auto.sh -h
 
 This script builds a local lab environment.
 
-Syntax: ./auto -[i|h|u|...]
+Syntax: ./auto.sh -[i|h|u|...]
 
 Options:
 
