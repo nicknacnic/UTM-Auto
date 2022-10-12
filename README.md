@@ -17,7 +17,6 @@ Edit SAD-LoL.sh install, uninstall, and test functions to include your VM names 
                   ./auto.sh -i
 
 
-```
 
 ## Running auto.sh
 
